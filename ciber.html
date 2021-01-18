@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Ciber</title>
+</head>
+<body>
+	<h3>CALCULADORA BÁSICA</h3>
+	<h4>Nivell 3 Exercici 1</h4>
+	<input type="text" id="op1" autofocus placeholder="Operando 1">
+	<select name="operation" id="operation">
+		<option value="suma">suma</option>
+		<option value="resta">resta</option>
+		<option value="multiplica">multiplica</option>
+		<option value="divide">divide</option>
+	</select>
+	<input type="text" id="op2" placeholder="Operando 2">
+	<button id="solve">Resolver</button>
+	<p id="result"></p>
+	
+	<script type="text/javascript">
+	
+		// Nivell 1 Exercici 1
+		console.log("Hola Mundo");
+		
+		// Nivell 1 Exercici 2
+		alert(`¡Me llamo Juan Carlos!`);
+		
+		// Nivell 1 Exercici 3
+		let nom = "Juan Carlos";
+		let cognom = "Fernandez"
+		console.log(nom, cognom);
+
+		// Nivell 1 Exercici 4
+		let num1 = 34;
+		let num2 = 56;
+		let suma = `La suma entre ${num1} i ${num2} és ${num1 + num2}`;
+		console.log(suma);
+
+		// Nivell 1 Exercici 5
+		let nota_examen = 4.6;
+		if (nota_examen < 5) alert(`Ohh has suspendido el examen con un ${nota_examen}`);
+		else alert (`Has aprobado con un ${nota_examen}`);
+
+		// Nivell 1 Exercici 6
+		let text = "Tinc un cotxe de color blau";
+		let words = text.split(" ");
+		let letters = text.split("");
+		let text_changed_word = words.map( word => {if (word == "blau") return "verd"; else return word});
+		console.log(text_changed_word.join(" "));
+		let text_changed_letter = letters.map(letter => {if (letter =="o") return "u"; else return letter});
+		console.log(text_changed_letter.join(""));
+
+		// Nivell 1 Exercici 7
+		let llista = ['taula', 'cadira', 'ordinador', 'libreta'];
+		llista.forEach( (item, index) => console.log(`L'objecte ${item} està a la posició ${index}`));
+
+		// Nivell 1 Exercici 8
+		function calculadora(operador, valor1, valor2) {
+			let resultado;
+			switch (operador) {
+				case "suma" :
+					resultado = valor1 + valor2;
+					break;
+				case "resta" :
+					resultado = valor1 - valor2;
+					break;
+				case "multiplica" :
+					resultado = valor1 * valor2;
+					break;
+				default :
+					resultado = "Error";
+			}
+			console.log(resultado);
+			alert(`El resultado es: ${resultado}`);
+		}
+
+		calculadora("resta", 40, 20);
+
+
+		// Nivell 2 Exercici 1
+		function calculadora_N2(operador, valor1, valor2) {
+			let resultado;
+			switch (operador) {
+				case "suma" :
+					resultado = valor1 + valor2;
+					break;
+				case "resta" :
+					resultado = valor1 - valor2;
+					break;
+				case "multiplica" :
+					resultado = valor1 * valor2;
+					break;
+				case "divide" :
+					if (valor2 == 0.0) resultado = "Error";
+					else resultado = valor1 / valor2;
+					break;
+				default :
+					resultado = "Error";
+			}
+			alert(`El resultado es: ${resultado}`);
+		}
+
+		let operador = prompt("Operador (suma, resta, multiplica, divide)");
+		let valor1 = prompt("Operando 1");
+		let valor2 = prompt("Operando 2");
+		calculadora_N2(operador, parseFloat(valor1), parseFloat(valor2));
+
+		
+		// Nivell 3 Exercici 1
+		document.getElementById("solve").onclick = init_calc;
+		document.getElementById("op2").onkeydown = teclado;
+
+		function teclado(e) {
+			let codigo_tecka = e.keyCode;
+			if (codigo_tecka == 13) {
+				init_calc();
+			}
+		}
+		
+		function init_calc() {
+			let valor1 = document.getElementById("op1").value;
+			let valor2 = document.getElementById("op2").value;
+			let operador = document.getElementById("operation").value
+			calculadora_N3(operador, parseFloat(valor1), parseFloat(valor2));
+		}
+
+		function calculadora_N3(operador, valor1, valor2) {
+			let resultado;
+			switch (operador) {
+				case "suma" :
+					resultado = valor1 + valor2;
+					break;
+				case "resta" :
+					resultado = valor1 - valor2;
+					break;
+				case "multiplica" :
+					resultado = valor1 * valor2;
+					break;
+				case "divide" :
+					if (valor2 == 0.0) resultado = "Error";
+					else resultado = valor1 / valor2;
+					break;
+				default :
+					resultado = "Error";
+			}
+			document.getElementById("result").innerHTML = `El resultado es: ${resultado}`;
+		}
+		
+	</script>
+</body>
+</html>
